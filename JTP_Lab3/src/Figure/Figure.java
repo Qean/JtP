@@ -7,4 +7,5 @@ public interface Figure {
     boolean equals(Object o);
     @Override
     String toString();
+    Figure clone();
 }

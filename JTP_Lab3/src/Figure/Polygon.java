@@ -6,7 +6,7 @@ public class Polygon implements Figure {
     public Polygon(Point[] point) {
         int i = 0;
         this.points = new Point[point.length];
-        for (Point p: point) {
+        for (Point p : point) {
             points[i] = new Point(p.getX(), p.getY());
             i++;
         }
@@ -39,9 +39,18 @@ public class Polygon implements Figure {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Polygon){
+        if (o instanceof Polygon) {
             return this.toString().equals(o.toString());
         }
         return super.equals(o);
+    }
+
+    @Override
+    public Polygon clone() {
+        Point points[] = new Point[this.points.length];
+        for (int i = 0; i < this.points.length; i++) {
+            points[i] = new Point(this.points[i].x, this.points[i].y);
+        }
+        return new Polygon(points);
     }
 }

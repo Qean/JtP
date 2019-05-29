@@ -64,4 +64,11 @@ public class Line implements Figure {
         }
         return super.equals(o);
     }
+
+    @Override
+    public Line clone() {
+        Point start = new Point(this.start.x, this.start.y);
+        Point end = new Point(this.end.x, this.end.y);
+        return new Line(start, end);
+    }
 }

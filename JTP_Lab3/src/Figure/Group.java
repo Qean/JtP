@@ -7,12 +7,7 @@ public class Group implements Figure{
         int i = 0;
         this.figures = new Figure[figureArray.length];
         for (Figure figure: figureArray) {
-            if (figure instanceof Point)
-                this.figures[i] = new Point(((Point) figure).getX(), ((Point) figure).getY());
-            else if (figure instanceof Line)
-                this.figures[i] = new Line(((Line) figure).getStart(), ((Line) figure).getEnd());
-            else if (figure instanceof Polygon)
-                this.figures[i] = new Polygon(((Polygon) figure).points);
+            this.figures[i] = figure.clone();
             i++;
         }
     }
@@ -43,7 +38,27 @@ public class Group implements Figure{
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        boolean test;
+        if (o instanceof  Group){
+            for (int i = 0; i < this.figures.length; i++) {
+                test = ((Group) o).figures[i].equals(this.figures[i]);
+                if (!test)
+                    return false;
+            }
+            return true;
+        }
+        return super.equals(o);
+    }
+
+    @Override
+    public Group clone() {
+        int i = 0;
+        Figure figures[] = new Figure[this.figures.length];
+        for (Figure figure: this.figures) {
+            figures[i] = figure.clone();
+            i++;
+        }
+        return new Group(figures);
     }
 }

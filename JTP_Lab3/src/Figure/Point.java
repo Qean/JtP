@@ -50,4 +50,9 @@ public class Point implements Figure {
         } else
             return super.equals(o);
     }
+
+    @Override
+    public Point clone() {
+        return new Point(this.x, this.y);
+    }
 }

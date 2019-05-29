@@ -18,8 +18,17 @@ public class Main {
         figArray[1] = figure2;
         Figure group = new Group(figArray);
         System.out.println(group.toString());
-        group.flip();
+        System.out.println(group.equals(group));
+        figure2.flip();
         System.out.println(group.toString());
+
+        Point p1 = new Point(2, 3);
+        System.out.println(p1.toString());
+        Point p2 = p1.clone();
+        System.out.println(p2.toString());
+        p1.flip();
+        System.out.println(p1.toString());
+        System.out.println(p2.toString());
 
     }
 }
